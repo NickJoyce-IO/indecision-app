@@ -2,18 +2,24 @@
 
 console.log('app.js is running');
 
-var template = React.createElement(
+// Define the app object
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer'
+
+    // Define the main template
+};var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Indecision App'
+        app.title
     ),
     React.createElement(
         'p',
         null,
-        'This is some info'
+        app.subtitle
     ),
     React.createElement(
         'p',
@@ -36,28 +42,8 @@ var template = React.createElement(
     )
 );
 
-var nickTemplate = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        'Ya'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'ya'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'yaaaaaaaaa'
-    )
-);
-
 // Get the root element
 var appRoot = document.getElementById('app');
 
 // render the JSX
-ReactDOM.render(nickTemplate, appRoot);
+ReactDOM.render(template, appRoot);
