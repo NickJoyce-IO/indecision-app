@@ -3,24 +3,55 @@ console.log('app.js is running')
 // Define the app object
 const app = {
     title: 'Indecision App',
-    subtitle: 'Put your life in the hands of a computer'
+    subtitle: 'Put your life in the hands of a computer', 
+    options: []
 }
 
-// Define the main template
-const template = (
-<div>
-    <h1>{app.title}</h1>
-    <p>{app.subtitle}</p>
-    <p>More info</p>
-    <ol>
-        <li>Item one</li>
-        <li>Item two</li>
-    </ol>
-</div>
-)
+// Define the main template 
+// if the subtitle exists render, if not dont
+// if options exist render one thing, otherwise other
+const onFormSubmit = (e) => {
+    e.preventDefault()
 
-// Get the root element
+    // gets the element text
+    const option = e.target.elements.option.value
+    if(option) {
+        app.options.push(option)
+        e.target.elements.option.value = ''
+        renderDOM()
+    }
+}
+
+const removeAll = () => {
+    app.options = []
+    renderDOM()
+}
+
+const renderDOM = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+            <p>{app.options.length}</p>
+            <button onClick={removeAll}>Remove All</button>
+            <ol>
+                <li>Item one</li>
+                <li>Item two</li>
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option" />
+                <button>Add Option</button>
+            </form>
+        </div>
+    )
+
+    ReactDOM.render(template, appRoot)
+}
+
 const appRoot = document.getElementById('app')
 
-// render the JSX
-ReactDOM.render(template, appRoot)
+renderDOM()
+
+
+
