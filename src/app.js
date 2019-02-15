@@ -1,57 +1,50 @@
-console.log('app.js is running')
-
-// Define the app object
-const app = {
-    title: 'Indecision App',
-    subtitle: 'Put your life in the hands of a computer', 
-    options: []
-}
-
-// Define the main template 
-// if the subtitle exists render, if not dont
-// if options exist render one thing, otherwise other
-const onFormSubmit = (e) => {
-    e.preventDefault()
-
-    // gets the element text
-    const option = e.target.elements.option.value
-    if(option) {
-        app.options.push(option)
-        e.target.elements.option.value = ''
-        renderDOM()
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+            <h1>Indecision</h1>
+            <h2>Put your life in the hands of a computer</h2>
+            </div>
+        )
     }
 }
 
-const removeAll = () => {
-    app.options = []
-    renderDOM()
+class Action extends React.Component {
+    render() {
+        return (
+            <div>
+            <button>What should I do</button>
+            </div>
+        )
+    }
 }
 
-const renderDOM = () => {
-    const template = (
-        <div>
-            <h1>{app.title}</h1>
-            {app.subtitle && <p>{app.subtitle}</p>}
-            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-            <p>{app.options.length}</p>
-            <button onClick={removeAll}>Remove All</button>
-            <ol>
-                <li>Item one</li>
-                <li>Item two</li>
-            </ol>
-            <form onSubmit={onFormSubmit}>
-                <input type="text" name="option" />
+class Options extends React.Component {
+    render() {
+        return <li>Option</li>
+    }
+}
+
+class AddOption extends React.Component {
+    render() {
+        return (
+            <div>
+                <input></input>
                 <button>Add Option</button>
-            </form>
-        </div>
-    )
-
-    ReactDOM.render(template, appRoot)
+            </div>
+        )
+    }
 }
 
-const appRoot = document.getElementById('app')
+const jsx = (
+    <div>
+        <Header />
+        <Action />
+        <Options />
+        <Options />
+        <Options />
+        <AddOption />
+    </div>
+)
 
-renderDOM()
-
-
-
+ReactDOM.render(jsx, document.getElementById('app'))
