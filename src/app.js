@@ -1,13 +1,16 @@
 console.log('app.js is running')
 
+
+// app object sets up the app
 const app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
     options: []
 }
 
-// const numbers = [55, 101, 1000]
 
+// adds options to the app.options array, prevents default behaviour
+// only do this if there is a value in the box
 const onFormSubmit = (e) => {
     e.preventDefault()
     const option = e.target.elements.option.value
@@ -20,6 +23,7 @@ const onFormSubmit = (e) => {
  
 }
 
+// Removes options, by clearing the array
 const onRemoveAll = () => {
     app.options = []
     renderTemplate()
