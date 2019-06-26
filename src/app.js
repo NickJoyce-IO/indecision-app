@@ -8,6 +8,8 @@ const app = {
     options: []
 }
 
+// get the div that will contain the template
+const appRoot = document.getElementById('app')
 
 // adds options to the app.options array, prevents default behaviour
 // only do this if there is a value in the box
@@ -29,13 +31,14 @@ const onRemoveAll = () => {
     renderTemplate()
 }
 
+// creates a random number between 0 and the length of the array
+// then returns the option at the index of that random number
 const onMakeDecision = () => {
     const randomNum = Math.floor(Math.random() * app.options.length)
     const option = app.options[randomNum]
     alert(option)
 }
 
-const appRoot = document.getElementById('app')
 
 const renderTemplate = () => {
     const template = (

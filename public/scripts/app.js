@@ -8,9 +8,12 @@ var app = {
     subtitle: 'Put your life in the hands of a computer',
     options: []
 
-    // adds options to the app.options array, prevents default behaviour
-    // only do this if there is a value in the box
-};var onFormSubmit = function onFormSubmit(e) {
+    // get the div that will contain the template
+};var appRoot = document.getElementById('app');
+
+// adds options to the app.options array, prevents default behaviour
+// only do this if there is a value in the box
+var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault();
     var option = e.target.elements.option.value;
 
@@ -27,13 +30,13 @@ var onRemoveAll = function onRemoveAll() {
     renderTemplate();
 };
 
+// creates a random number between 0 and the length of the array
+// then returns the option at the index of that random number
 var onMakeDecision = function onMakeDecision() {
     var randomNum = Math.floor(Math.random() * app.options.length);
     var option = app.options[randomNum];
     alert(option);
 };
-
-var appRoot = document.getElementById('app');
 
 var renderTemplate = function renderTemplate() {
     var template = React.createElement(
