@@ -9,7 +9,7 @@ const toggleVisibility = () => {
     renderTemplate()
 }
 
-const renderTemplate = () => {ß
+const renderTemplate = () => {
     const template = (
         <div>
             <h1>Visibility Toggle</h1>
