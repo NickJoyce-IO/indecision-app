@@ -37,10 +37,10 @@ class Counter extends React.Component {
                 <button onClick={this.handleMinusOne}>-1</button>
                 <button onClick={this.handleReset}>reset</button>
             </div>
-
         )
     }
 }
+
 
 ReactDOM.render(<Counter />, document.getElementById('app'))
 
